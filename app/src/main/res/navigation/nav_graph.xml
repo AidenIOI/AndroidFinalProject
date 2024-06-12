@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_to_Equations_From_Vector"
             app:destination="@id/FromVectorFragment" />
+        <action
+            android:id="@+id/toEquationsFromScalar"
+            app:destination="@id/fromScalarFragment" />
     </fragment>
     <fragment
         android:id="@+id/FromVectorFragment"
@@ -21,6 +24,14 @@
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_from_vector">
 
+        <action
+            android:id="@+id/action_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fromScalarFragment"
+        android:name="com.aiden.vectorcalculator.FromScalarFragment"
+        android:label="FromScalarFragment" >
         <action
             android:id="@+id/action_to_FirstFragment"
             app:destination="@id/FirstFragment" />

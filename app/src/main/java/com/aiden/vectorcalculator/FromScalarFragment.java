@@ -1,6 +1,6 @@
 package com.aiden.vectorcalculator;
 
-import static com.aiden.vectorcalculator.VectorMath.*;
+import static com.aiden.vectorcalculator.VectorMath.crossProduct;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.agog.mathdisplay.MTMathView;
 import com.aiden.vectorcalculator.databinding.FragmentFromVectorBinding;
 
-public class FromVectorFragment extends Fragment {
+public class FromScalarFragment extends Fragment {
 
     private FragmentFromVectorBinding binding;
 
@@ -154,7 +154,7 @@ public class FromVectorFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.back.setOnClickListener(v ->
-                NavHostFragment.findNavController(FromVectorFragment.this)
+                NavHostFragment.findNavController(FromScalarFragment.this)
                         .navigate(R.id.action_to_FirstFragment)
         );
     }
