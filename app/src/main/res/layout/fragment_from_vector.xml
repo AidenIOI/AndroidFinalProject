@@ -42,13 +42,13 @@
         android:orientation="horizontal"
         android:paddingTop="25dp"
         android:paddingBottom="20dp"
+        android:paddingLeft="10dp"
         android:layout_below="@id/topBar" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vector Equation:"
-            android:layout_weight="1"
+            android:text="Vector Equation: "
             android:textAlignment="center" />
 
         <TextView
@@ -57,6 +57,7 @@
             android:text="[" />
 
         <EditText
+            android:id="@+id/posX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -67,6 +68,7 @@
             android:text="," />
 
         <EditText
+            android:id="@+id/posY"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -77,6 +79,7 @@
             android:text="," />
 
         <EditText
+            android:id="@+id/posZ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -87,6 +90,7 @@
             android:text="] + s [" />
 
         <EditText
+            android:id="@+id/dir1X"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -97,6 +101,7 @@
             android:text="," />
 
         <EditText
+            android:id="@+id/dir1Y"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -107,6 +112,7 @@
             android:text="," />
 
         <EditText
+            android:id="@+id/dir1Z"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -117,6 +123,7 @@
             android:text="] + t [" />
 
         <EditText
+            android:id="@+id/dir2X"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -127,6 +134,7 @@
             android:text="," />
 
         <EditText
+            android:id="@+id/dir2Y"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -137,6 +145,7 @@
             android:text="," />
 
         <EditText
+            android:id="@+id/dir2Z"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -157,28 +166,41 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/vectorInput" />
 
-    <LinearLayout
-        android:id="@+id/parametricEquations"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/parametricText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:textAlignment="center"
         android:paddingTop="80dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:layout_below="@id/calculateButton" >
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@id/calculateButton"
+        android:text="Parametric Equations:" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:paddingRight="10dp"
-            android:text="Parametric Equations:" />
+    <com.agog.mathdisplay.MTMathView
+        android:id="@+id/parametricX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="60dp"
+        android:paddingBottom="15dp"
+        android:layout_below="@id/calculateButton"
+        android:layout_toRightOf="@id/parametricText" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="x = 10 + 2t\ny = 4 + 3s + 2t\nz = 3" />
-    </LinearLayout>
+    <com.agog.mathdisplay.MTMathView
+        android:id="@+id/parametricY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:layout_below="@id/parametricX"
+        android:layout_toRightOf="@id/parametricText" />
+
+    <com.agog.mathdisplay.MTMathView
+        android:id="@+id/parametricZ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/parametricY"
+        android:paddingBottom="10dp"
+        android:layout_toRightOf="@id/parametricText" />
 
     <LinearLayout
         android:id="@+id/symmetricEquations"
@@ -186,7 +208,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp"
-        android:layout_below="@id/parametricEquations" >
+        android:layout_below="@id/parametricZ" >
 
         <TextView
             android:layout_width="wrap_content"
@@ -194,12 +216,6 @@
             android:textAlignment="center"
             android:paddingRight="10dp"
             android:text="Symmetric Equations:" />
-
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="temptemptemp" />
 
         <com.agog.mathdisplay.MTMathView
             android:id="@+id/mathViewTest"
