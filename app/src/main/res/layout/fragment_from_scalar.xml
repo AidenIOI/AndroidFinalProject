@@ -50,16 +50,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vector Equation: "
+            android:text="Scalar Equation: "
             android:textAlignment="center" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="[" />
-
         <EditText
-            android:id="@+id/posX"
+            android:id="@+id/normX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -67,10 +62,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="," />
+            android:text="x  + " />
 
         <EditText
-            android:id="@+id/posY"
+            android:id="@+id/normY"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -78,10 +73,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="," />
+            android:text="y  + " />
 
         <EditText
-            android:id="@+id/posZ"
+            android:id="@+id/normZ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -89,10 +84,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="] + s [" />
+            android:text="z  + " />
 
         <EditText
-            android:id="@+id/dir1X"
+            android:id="@+id/D"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -100,65 +95,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="," />
-
-        <EditText
-            android:id="@+id/dir1Y"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal|numberSigned" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="," />
-
-        <EditText
-            android:id="@+id/dir1Z"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal|numberSigned" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="] + t [" />
-
-        <EditText
-            android:id="@+id/dir2X"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal|numberSigned" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="," />
-
-        <EditText
-            android:id="@+id/dir2Y"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal|numberSigned" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="," />
-
-        <EditText
-            android:id="@+id/dir2Z"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal|numberSigned" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="]" />
+            android:text=" = 0" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/scalarWarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/vectorInput"
+        android:text="NOTE: There are many potential vector forms for any given\nscalar equation, what is shown is only one possible equation."
+        />
 
     <Button
         android:id="@+id/calculateButton"
@@ -166,7 +114,7 @@
         android:layout_height="wrap_content"
         android:text="Calculate"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/vectorInput" />
+        android:layout_below="@id/scalarWarning" />
 
     <TextView
         android:id="@+id/parametricText"
@@ -175,6 +123,7 @@
         android:paddingTop="80dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:visibility="invisible"
         android:layout_below="@id/calculateButton"
         android:text="Parametric Equations:" />
 
@@ -184,6 +133,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="60dp"
         android:paddingBottom="15dp"
+        android:visibility="invisible"
         android:layout_below="@id/calculateButton"
         android:layout_toRightOf="@id/parametricText" />
 
@@ -192,6 +142,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="15dp"
+        android:visibility="invisible"
         android:layout_below="@id/parametricX"
         android:layout_toRightOf="@id/parametricText" />
 
@@ -199,44 +150,26 @@
         android:id="@+id/parametricZ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/parametricY"
         android:paddingBottom="10dp"
+        android:visibility="invisible"
+        android:layout_below="@id/parametricY"
         android:layout_toRightOf="@id/parametricText" />
 
     <TextView
-        android:id="@+id/symmetricText"
+        android:id="@+id/vectorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:visibility="invisible"
         android:layout_below="@id/parametricZ"
-        android:text="Symmetric Equations:" />
+        android:text="Vector Equation:" />
 
     <com.agog.mathdisplay.MTMathView
-        android:id="@+id/symmetricEqn"
+        android:id="@+id/vectorEqn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:visibility="invisible"
-        android:layout_below="@id/parametricZ"
-        android:layout_toRightOf="@id/symmetricText" />
-
-    <TextView
-        android:id="@+id/scalarText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:visibility="invisible"
-        android:layout_below="@id/parametricZ"
-        android:text="Scalar Equation:" />
-
-    <com.agog.mathdisplay.MTMathView
-        android:id="@+id/scalarEqn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:visibility="invisible"
-        android:layout_below="@id/parametricZ"
-        android:layout_toRightOf="@id/scalarText" />
+        android:layout_below="@id/vectorText" />
 
 </RelativeLayout>

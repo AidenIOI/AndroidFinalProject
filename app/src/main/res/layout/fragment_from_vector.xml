@@ -175,6 +175,7 @@
         android:paddingTop="80dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:visibility="invisible"
         android:layout_below="@id/calculateButton"
         android:text="Parametric Equations:" />
 
@@ -184,6 +185,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="60dp"
         android:paddingBottom="15dp"
+        android:visibility="invisible"
         android:layout_below="@id/calculateButton"
         android:layout_toRightOf="@id/parametricText" />
 
@@ -192,6 +194,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="15dp"
+        android:visibility="invisible"
         android:layout_below="@id/parametricX"
         android:layout_toRightOf="@id/parametricText" />
 
@@ -199,8 +202,9 @@
         android:id="@+id/parametricZ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/parametricY"
         android:paddingBottom="10dp"
+        android:visibility="invisible"
+        android:layout_below="@id/parametricY"
         android:layout_toRightOf="@id/parametricText" />
 
     <TextView

@@ -33,6 +33,11 @@ public class FirstFragment extends Fragment {
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_to_Equations_From_Vector)
         );
+
+        binding.button2.setOnClickListener(v ->
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_to_Equations_From_Scalar)
+        );
     }
 
     @Override

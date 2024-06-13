@@ -69,6 +69,7 @@ public class FromVectorFragment extends Fragment {
         scalar.setFontSize(48);
 
         // Text for equations
+        TextView parametricText = (TextView) layout.findViewById(R.id.parametricText);
         TextView symmText = (TextView) layout.findViewById(R.id.symmetricText);
         TextView scalarText = (TextView) layout.findViewById(R.id.scalarText);
 
@@ -131,6 +132,12 @@ public class FromVectorFragment extends Fragment {
             paraX.setLatex("x=" + formatParametric(posVector[0], dir1Vector[0], dir2Vector[0]));
             paraY.setLatex("y=" + formatParametric(posVector[1], dir1Vector[1], dir2Vector[1]));
             paraZ.setLatex("z=" + formatParametric(posVector[2], dir1Vector[2], dir2Vector[2]));
+
+            // Toggle visibility
+            parametricText.setVisibility(View.VISIBLE);
+            paraX.setVisibility(View.VISIBLE);
+            paraY.setVisibility(View.VISIBLE);
+            paraZ.setVisibility(View.VISIBLE);
 
             // Symmetric Equation (line only)
             if (!plane) {

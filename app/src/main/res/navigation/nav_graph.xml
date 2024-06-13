@@ -15,7 +15,7 @@
             android:id="@+id/action_to_Equations_From_Vector"
             app:destination="@id/FromVectorFragment" />
         <action
-            android:id="@+id/toEquationsFromScalar"
+            android:id="@+id/action_to_Equations_From_Scalar"
             app:destination="@id/fromScalarFragment" />
     </fragment>
     <fragment
