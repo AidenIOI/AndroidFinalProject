@@ -82,11 +82,11 @@ public class FromVectorFragment extends Fragment {
             InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
 
-            double[] posVector = new double[3];
-            double[] dir1Vector = new double[3];
-            double[] dir2Vector = new double[3];
+            double[] posArray = new double[3];
+            double[] dir1Array = new double[3];
+            double[] dir2Array = new double[3];
 
-            boolean plane = true;
+            boolean isPlane = true;
 
             for (int i = 0; i < 3; i++) {
                 String text = posVectorText[i].getText().toString();
@@ -94,7 +94,7 @@ public class FromVectorFragment extends Fragment {
                     Toast.makeText(this.getContext(), "A Field was Left Empty!", Toast.LENGTH_LONG).show();
                     return;
                 }
-                posVector[i] = Double.parseDouble(text);
+                posArray[i] = Double.parseDouble(text);
             }
             for (int i = 0; i < 3; i++) {
                 String text = dir1VectorText[i].getText().toString();
@@ -102,7 +102,7 @@ public class FromVectorFragment extends Fragment {
                     Toast.makeText(this.getContext(), "A Field was Left Empty!", Toast.LENGTH_LONG).show();
                     return;
                 }
-                dir1Vector[i] = Double.parseDouble(text);
+                dir1Array[i] = Double.parseDouble(text);
             }
             // Since a line has no secondary direction vector, if this is empty the user entered
             // a line, otherwise it is a plane.
@@ -115,7 +115,7 @@ public class FromVectorFragment extends Fragment {
                 }
                 else {
                     valueFilled = true;
-                    dir2Vector[i] = Double.parseDouble(text);
+                    dir2Array[i] = Double.parseDouble(text);
                 }
             }
 
@@ -126,39 +126,45 @@ public class FromVectorFragment extends Fragment {
                     return;
                 }
                 // If unfilled, the user entered a line
-                plane = false;
+                isPlane = false;
             }
 
-            // Parametric Equation (both line and plane)
             // TODO: Work on sizing of latex views to better fit display
             // TODO: Add line/plane dependent equations
-            paraX.setLatex("x=" + formatParametric(posVector[0], dir1Vector[0], dir2Vector[0]));
-            paraY.setLatex("y=" + formatParametric(posVector[1], dir1Vector[1], dir2Vector[1]));
-            paraZ.setLatex("z=" + formatParametric(posVector[2], dir1Vector[2], dir2Vector[2]));
+            if (isPlane) {
+                Plane plane = new Plane(posArray, dir1Array, dir2Array);
 
-            // Toggle visibility
-            parametricText.setVisibility(View.VISIBLE);
-            paraX.setVisibility(View.VISIBLE);
-            paraY.setVisibility(View.VISIBLE);
-            paraZ.setVisibility(View.VISIBLE);
+                paraX.setLatex(plane.paraXLatex());
+                paraY.setLatex(plane.paraYLatex());
+                paraZ.setLatex(plane.paraZLatex());
 
-            // Symmetric Equation (line only)
-            if (!plane) {
-                symm.setLatex(formatSymmetric(posVector, dir1Vector));
-                // Hide scalar equation and show symmetric equation
-                scalarText.setVisibility(View.INVISIBLE);
-                scalar.setVisibility(View.INVISIBLE);
-                symmText.setVisibility(View.VISIBLE);
-                symm.setVisibility(View.VISIBLE);
-            }
-            else {
-                scalar.setLatex(formatScalar(posVector, dir1Vector, dir2Vector));
+                scalar.setLatex(plane.scalarEqnLatex());
                 // Hide symmetric equation and show scalar equation
                 symmText.setVisibility(View.INVISIBLE);
                 symm.setVisibility(View.INVISIBLE);
                 scalarText.setVisibility(View.VISIBLE);
                 scalar.setVisibility(View.VISIBLE);
             }
+            else {
+                Line line = new Line(posArray, dir1Array);
+
+                paraX.setLatex(line.paraXLatex());
+                paraY.setLatex(line.paraYLatex());
+                paraZ.setLatex(line.paraZLatex());
+
+                symm.setLatex(line.symmEqnLatex());
+                // Hide scalar equation and show symmetric equation
+                scalarText.setVisibility(View.INVISIBLE);
+                scalar.setVisibility(View.INVISIBLE);
+                symmText.setVisibility(View.VISIBLE);
+                symm.setVisibility(View.VISIBLE);
+            }
+
+            // Toggle visibility
+            parametricText.setVisibility(View.VISIBLE);
+            paraX.setVisibility(View.VISIBLE);
+            paraY.setVisibility(View.VISIBLE);
+            paraZ.setVisibility(View.VISIBLE);
         });
 
         binding.back.setOnClickListener(v ->
@@ -171,135 +177,5 @@ public class FromVectorFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-
-    private static String formatParametric(double pos, double vect1) {
-        if (pos == 0) {
-            if (vect1 == 0) {
-                return "0";
-            }
-            return String.valueOf(vect1) + "s";
-        }
-        if (vect1 == 0) {
-            return String.valueOf(pos);
-        }
-        if (vect1 < 0) {
-            return String.valueOf(pos) + String.valueOf(vect1) + "s";
-        }
-        return String.valueOf(pos) + "+" + String.valueOf(vect1) + "s";
-    }
-
-    private static String formatParametric(double pos, double vect1, double vect2) {
-        String partA = formatParametric(pos, vect1);
-        if (vect2 == 0) {
-            return partA;
-        }
-        if (partA.equals("0")) {
-            return String.valueOf(vect2) + "t";
-        }
-        if (vect2 < 0) {
-            return partA + String.valueOf(vect2) + "t";
-        }
-        return partA + "+" + String.valueOf(vect2) + "t";
-    }
-
-    // TODO: Work on handling signs and division by 1
-    // TODO: Either change to integers or check if decimal can be hidden for whole numbers
-    private static String formatSymmetric(double[] posVect, double[] dirVect) {
-        String latex = "";
-        // X part
-        if (dirVect[0] != 0) {
-            if (posVect[0] == 0) {
-                latex += "\\frac{x}{" + String.valueOf(dirVect[0] + "}");
-            }
-            else {
-                String top = "x";
-                if (posVect[0] > 0) {
-                    top += "+";
-                }
-                top += String.valueOf(posVect[0]);
-
-                if (dirVect[0] == 1) {
-                    latex += top;
-                }
-                else {
-                    latex += "\\frac{" + top + "}{" + String.valueOf(dirVect[0]) + "}";
-                }
-            }
-        }
-        // Y part
-        if (dirVect[1] != 0) {
-            if (!latex.isEmpty()) latex += "=";
-            if (posVect[1] == 0) {
-                latex += "\\frac{y}{" + String.valueOf(dirVect[1] + "}");
-            }
-            else {
-                String top = "y";
-                if (posVect[1] > 0) {
-                    top += "+";
-                }
-                top += String.valueOf(posVect[1]);
-
-                if (dirVect[1] == 1) {
-                    latex += top;
-                }
-                else {
-                    latex += "\\frac{" + top + "}{" + String.valueOf(dirVect[1]) + "}";
-                }
-            }
-        }
-        // Z part
-        if (dirVect[2] != 0) {
-            if (!latex.isEmpty()) latex += "=";
-            if (posVect[2] == 0) {
-                latex += "\\frac{z}{" + String.valueOf(dirVect[2] + "}");
-            }
-            else {
-                String top = "z";
-                if (posVect[2] > 0) {
-                    top += "+";
-                }
-                top += String.valueOf(posVect[2]);
-
-                if (dirVect[2] == 1) {
-                    latex += top;
-                }
-                else {
-                    latex += "\\frac{" + top + "}{" + String.valueOf(dirVect[2]) + "}";
-                }
-            }
-        }
-
-        return latex;
-    }
-
-    private static String formatScalar(double[] posVect, double[] dirVect1, double[] dirVect2) {
-        double[] normal = crossProduct(dirVect1, dirVect2);
-        double d = -(posVect[0] * normal[0] + posVect[1] * normal[1] + posVect[2] * normal[2]);
-
-        String latex = "";
-        if (normal[0] != 0) {
-            latex += String.valueOf(normal[0]) + "x";
-        }
-        if (normal[1] < 0 || (latex.isEmpty() && normal[1] != 0)) {
-            latex += String.valueOf(normal[1]) + "y";
-        }
-        else if (normal[1] > 0) {
-            latex += "+" + String.valueOf(normal[1]) + "y";
-        }
-        if (normal[2] < 0 || (latex.isEmpty() && normal[2] != 0)) {
-            latex += String.valueOf(normal[2]) + "z";
-        }
-        else if (normal[1] > 0) {
-            latex += "+" + String.valueOf(normal[2]) + "z";
-        }
-        if (d < 0 || (latex.isEmpty() && d != 0)) {
-            latex += String.valueOf(d);
-        }
-        else if (d > 0) {
-            latex += "+" + String.valueOf(d);
-        }
-
-        return latex.isEmpty() ? "" : "0=" + latex ;
     }
 }
