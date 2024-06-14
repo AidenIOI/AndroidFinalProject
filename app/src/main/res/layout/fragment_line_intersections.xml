@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".FromVectorFragment" >
 
-    <!-- TODO: Align equations along a barrier / guideline -->
-
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -38,19 +36,20 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/vectorInput"
+        android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingTop="25dp"
-        android:paddingBottom="20dp"
-        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
         android:layout_below="@id/topBar" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vector Equation: "
+            android:text="Line 1:"
+            android:paddingRight="30dp"
             android:textAlignment="center" />
 
         <TextView
@@ -59,7 +58,7 @@
             android:text="[" />
 
         <EditText
-            android:id="@+id/posX"
+            android:id="@+id/line1posX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -70,7 +69,7 @@
             android:text="," />
 
         <EditText
-            android:id="@+id/posY"
+            android:id="@+id/line1posY"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -81,7 +80,7 @@
             android:text="," />
 
         <EditText
-            android:id="@+id/posZ"
+            android:id="@+id/line1posZ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -92,7 +91,7 @@
             android:text="] + s [" />
 
         <EditText
-            android:id="@+id/dir1X"
+            android:id="@+id/line1dirX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -103,7 +102,7 @@
             android:text="," />
 
         <EditText
-            android:id="@+id/dir1Y"
+            android:id="@+id/line1dirY"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -114,7 +113,7 @@
             android:text="," />
 
         <EditText
-            android:id="@+id/dir1Z"
+            android:id="@+id/line1dirZ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -122,10 +121,34 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="] + t [" />
+            android:text="]" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="15dp"
+        android:layout_below="@id/line1" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Line 2:"
+            android:paddingRight="30dp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[" />
 
         <EditText
-            android:id="@+id/dir2X"
+            android:id="@+id/line2posX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -136,7 +159,7 @@
             android:text="," />
 
         <EditText
-            android:id="@+id/dir2Y"
+            android:id="@+id/line2posY"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -147,7 +170,7 @@
             android:text="," />
 
         <EditText
-            android:id="@+id/dir2Z"
+            android:id="@+id/line2posZ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal|numberSigned" />
@@ -155,7 +178,39 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:text="] + s [" />
+
+        <EditText
+            android:id="@+id/line2dirX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/line2dirY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/line2dirZ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="]" />
 
     </LinearLayout>
@@ -166,6 +221,6 @@
         android:layout_height="wrap_content"
         android:text="Calculate"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/vectorInput" />
+        android:layout_below="@id/line2" />
 
 </RelativeLayout>
