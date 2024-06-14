@@ -29,7 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Vector to Scalar Form"
+            android:text="Line Intersections"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -167,80 +167,5 @@
         android:text="Calculate"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/vectorInput" />
-
-    <TextView
-        android:id="@+id/parametricText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="80dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:visibility="invisible"
-        android:layout_below="@id/calculateButton"
-        android:text="Parametric Equations:" />
-
-    <com.agog.mathdisplay.MTMathView
-        android:id="@+id/parametricX"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="15dp"
-        android:paddingLeft="10dp"
-        android:paddingBottom="15dp"
-        android:visibility="invisible"
-        android:layout_below="@id/parametricText" />
-
-    <com.agog.mathdisplay.MTMathView
-        android:id="@+id/parametricY"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingBottom="15dp"
-        android:visibility="invisible"
-        android:layout_below="@id/parametricX" />
-
-    <com.agog.mathdisplay.MTMathView
-        android:id="@+id/parametricZ"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:paddingBottom="15dp"
-        android:visibility="invisible"
-        android:layout_below="@id/parametricY" />
-
-    <TextView
-        android:id="@+id/symmetricText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:visibility="invisible"
-        android:layout_below="@id/parametricZ"
-        android:text="Symmetric Equations:" />
-
-    <com.agog.mathdisplay.MTMathView
-        android:id="@+id/symmetricEqn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="15dp"
-        android:visibility="invisible"
-        android:layout_below="@id/parametricZ"
-        android:layout_toRightOf="@id/symmetricText" />
-
-    <TextView
-        android:id="@+id/scalarText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:visibility="invisible"
-        android:layout_below="@id/parametricZ"
-        android:text="Scalar Equation:" />
-
-    <com.agog.mathdisplay.MTMathView
-        android:id="@+id/scalarEqn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="15dp"
-        android:visibility="invisible"
-        android:layout_below="@id/parametricZ"
-        android:layout_toRightOf="@id/scalarText" />
 
 </RelativeLayout>

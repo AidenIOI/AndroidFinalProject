@@ -4,14 +4,12 @@ import static com.aiden.vectorcalculator.VectorMath.crossProduct;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,25 +32,29 @@ public class FromScalarFragment extends Fragment {
     ) {
         binding = FragmentFromScalarBinding.inflate(inflater, container, false);
 
-        RelativeLayout layout = binding.getRoot();
+        return binding.getRoot();
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         // Get views for inputted values
-        EditText normX = layout.findViewById(R.id.normX);
-        EditText normY = layout.findViewById(R.id.normY);
-        EditText normZ = layout.findViewById(R.id.normZ);
-        EditText DValue = layout.findViewById(R.id.D);
+        EditText normX = view.findViewById(R.id.normX);
+        EditText normY = view.findViewById(R.id.normY);
+        EditText normZ = view.findViewById(R.id.normZ);
+        EditText DValue = view.findViewById(R.id.D);
 
         // Arrays for each individual vector
         EditText[] normalVectorText = {normX, normY, normZ};
 
         // Get button view
-        Button calcButton = (Button) layout.findViewById(R.id.calculateButton);
+        Button calcButton = (Button) view.findViewById(R.id.calculateButton);
 
         // LaTeX !!!!!!!!!
-        MTMathView paraX = (MTMathView) layout.findViewById(R.id.parametricX);
-        MTMathView paraY = (MTMathView) layout.findViewById(R.id.parametricY);
-        MTMathView paraZ = (MTMathView) layout.findViewById(R.id.parametricZ);
-        MTMathView vectorEqn = (MTMathView) layout.findViewById(R.id.vectorEqn);
+        MTMathView paraX = (MTMathView) view.findViewById(R.id.parametricX);
+        MTMathView paraY = (MTMathView) view.findViewById(R.id.parametricY);
+        MTMathView paraZ = (MTMathView) view.findViewById(R.id.parametricZ);
+        MTMathView vectorEqn = (MTMathView) view.findViewById(R.id.vectorEqn);
 
         // Set sizes for LaTeX views
         paraX.setFontSize(48);
@@ -61,8 +63,8 @@ public class FromScalarFragment extends Fragment {
         vectorEqn.setFontSize(38);
 
         // Equation text views
-        TextView parametricText = (TextView) layout.findViewById(R.id.parametricText);
-        TextView vectorEqnText = (TextView) layout.findViewById(R.id.vectorText);
+        TextView parametricText = (TextView) view.findViewById(R.id.parametricText);
+        TextView vectorEqnText = (TextView) view.findViewById(R.id.vectorText);
 
         calcButton.setOnClickListener ( l -> {
             // Close keyboard
@@ -118,12 +120,6 @@ public class FromScalarFragment extends Fragment {
             vectorEqn.setVisibility(View.VISIBLE);
             vectorEqnText.setVisibility(View.VISIBLE);
         });
-
-        return binding.getRoot();
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
         binding.back.setOnClickListener(v ->
                 NavHostFragment.findNavController(FromScalarFragment.this)

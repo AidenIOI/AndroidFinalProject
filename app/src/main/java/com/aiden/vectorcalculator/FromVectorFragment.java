@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,18 +32,22 @@ public class FromVectorFragment extends Fragment {
     ) {
         binding = FragmentFromVectorBinding.inflate(inflater, container, false);
 
-        RelativeLayout layout = binding.getRoot();
+        return binding.getRoot();
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         // Get views for inputted values
-        EditText posX = (EditText) layout.findViewById(R.id.posX);
-        EditText posY = (EditText) layout.findViewById(R.id.posY);
-        EditText posZ = (EditText) layout.findViewById(R.id.posZ);
-        EditText dir1X = (EditText) layout.findViewById(R.id.dir1X);
-        EditText dir1Y = (EditText) layout.findViewById(R.id.dir1Y);
-        EditText dir1Z = (EditText) layout.findViewById(R.id.dir1Z);
-        EditText dir2X = (EditText) layout.findViewById(R.id.dir2X);
-        EditText dir2Y = (EditText) layout.findViewById(R.id.dir2Y);
-        EditText dir2Z = (EditText) layout.findViewById(R.id.dir2Z);
+        EditText posX = (EditText) view.findViewById(R.id.posX);
+        EditText posY = (EditText) view.findViewById(R.id.posY);
+        EditText posZ = (EditText) view.findViewById(R.id.posZ);
+        EditText dir1X = (EditText) view.findViewById(R.id.dir1X);
+        EditText dir1Y = (EditText) view.findViewById(R.id.dir1Y);
+        EditText dir1Z = (EditText) view.findViewById(R.id.dir1Z);
+        EditText dir2X = (EditText) view.findViewById(R.id.dir2X);
+        EditText dir2Y = (EditText) view.findViewById(R.id.dir2Y);
+        EditText dir2Z = (EditText) view.findViewById(R.id.dir2Z);
 
         // Arrays for each individual vector
         EditText[] posVectorText = {posX, posY, posZ};
@@ -52,14 +55,14 @@ public class FromVectorFragment extends Fragment {
         EditText[] dir2VectorText = {dir2X, dir2Y, dir2Z};
 
         // Get button view
-        Button calcButton = (Button) layout.findViewById(R.id.calculateButton);
+        Button calcButton = (Button) view.findViewById(R.id.calculateButton);
 
         // LaTeX !!!!!!!!!
-        MTMathView paraX = (MTMathView) layout.findViewById(R.id.parametricX);
-        MTMathView paraY = (MTMathView) layout.findViewById(R.id.parametricY);
-        MTMathView paraZ = (MTMathView) layout.findViewById(R.id.parametricZ);
-        MTMathView symm = (MTMathView) layout.findViewById(R.id.symmetricEqn);
-        MTMathView scalar = (MTMathView) layout.findViewById(R.id.scalarEqn);
+        MTMathView paraX = (MTMathView) view.findViewById(R.id.parametricX);
+        MTMathView paraY = (MTMathView) view.findViewById(R.id.parametricY);
+        MTMathView paraZ = (MTMathView) view.findViewById(R.id.parametricZ);
+        MTMathView symm = (MTMathView) view.findViewById(R.id.symmetricEqn);
+        MTMathView scalar = (MTMathView) view.findViewById(R.id.scalarEqn);
 
         // Set sizes for LaTeX views
         paraX.setFontSize(48);
@@ -69,9 +72,9 @@ public class FromVectorFragment extends Fragment {
         scalar.setFontSize(48);
 
         // Text for equations
-        TextView parametricText = (TextView) layout.findViewById(R.id.parametricText);
-        TextView symmText = (TextView) layout.findViewById(R.id.symmetricText);
-        TextView scalarText = (TextView) layout.findViewById(R.id.scalarText);
+        TextView parametricText = (TextView) view.findViewById(R.id.parametricText);
+        TextView symmText = (TextView) view.findViewById(R.id.symmetricText);
+        TextView scalarText = (TextView) view.findViewById(R.id.scalarText);
 
         calcButton.setOnClickListener ( l -> {
             // Close keyboard
@@ -144,21 +147,19 @@ public class FromVectorFragment extends Fragment {
                 symm.setLatex(formatSymmetric(posVector, dir1Vector));
                 // Hide scalar equation and show symmetric equation
                 scalarText.setVisibility(View.INVISIBLE);
+                scalar.setVisibility(View.INVISIBLE);
                 symmText.setVisibility(View.VISIBLE);
+                symm.setVisibility(View.VISIBLE);
             }
             else {
                 scalar.setLatex(formatScalar(posVector, dir1Vector, dir2Vector));
                 // Hide symmetric equation and show scalar equation
                 symmText.setVisibility(View.INVISIBLE);
+                symm.setVisibility(View.INVISIBLE);
                 scalarText.setVisibility(View.VISIBLE);
+                scalar.setVisibility(View.VISIBLE);
             }
         });
-
-        return binding.getRoot();
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
         binding.back.setOnClickListener(v ->
                 NavHostFragment.findNavController(FromVectorFragment.this)

@@ -131,29 +131,29 @@
         android:id="@+id/parametricX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="60dp"
+        android:paddingTop="15dp"
+        android:paddingLeft="10dp"
         android:paddingBottom="15dp"
         android:visibility="invisible"
-        android:layout_below="@id/calculateButton"
-        android:layout_toRightOf="@id/parametricText" />
+        android:layout_below="@id/parametricText" />
 
     <com.agog.mathdisplay.MTMathView
         android:id="@+id/parametricY"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
         android:paddingBottom="15dp"
         android:visibility="invisible"
-        android:layout_below="@id/parametricX"
-        android:layout_toRightOf="@id/parametricText" />
+        android:layout_below="@id/parametricX" />
 
     <com.agog.mathdisplay.MTMathView
         android:id="@+id/parametricZ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="15dp"
         android:visibility="invisible"
-        android:layout_below="@id/parametricY"
-        android:layout_toRightOf="@id/parametricText" />
+        android:layout_below="@id/parametricY" />
 
     <TextView
         android:id="@+id/vectorText"
