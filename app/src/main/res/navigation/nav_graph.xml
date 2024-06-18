@@ -12,11 +12,17 @@
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_to_Equations_From_Vector"
+            android:id="@+id/action_to_equationsFromVectorFragment"
             app:destination="@id/FromVectorFragment" />
         <action
-            android:id="@+id/action_to_Equations_From_Scalar"
+            android:id="@+id/action_to_equationsFromScalarFragment"
             app:destination="@id/fromScalarFragment" />
+        <action
+            android:id="@+id/action_to_lineIntersectionsFragment"
+            app:destination="@id/lineIntersectionsFragment" />
+        <action
+            android:id="@+id/action_to_planeIntersectionsFragment"
+            app:destination="@id/planeIntersectionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/FromVectorFragment"
@@ -32,6 +38,22 @@
         android:id="@+id/fromScalarFragment"
         android:name="com.aiden.vectorcalculator.FromScalarFragment"
         android:label="FromScalarFragment" >
+        <action
+            android:id="@+id/action_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lineIntersectionsFragment"
+        android:name="com.aiden.vectorcalculator.LineIntersectionsFragment"
+        android:label="LineIntersectionsFragment" >
+        <action
+            android:id="@+id/action_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/planeIntersectionsFragment"
+        android:name="com.aiden.vectorcalculator.PlaneIntersectionsFragment"
+        android:label="PlaneIntersectionsFragment" >
         <action
             android:id="@+id/action_to_FirstFragment"
             app:destination="@id/FirstFragment" />

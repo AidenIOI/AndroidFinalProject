@@ -33,7 +33,7 @@ public class Line {
     }
 
     public String vectorEqnLatex() {
-        return "[x,y,z]" + posVec.toLatex() + "+s" + dirVec.toLatex();
+        return "[x,y,z]=" + posVec.toLatex() + "+s" + dirVec.toLatex();
     }
 
     public String paraXLatex() {

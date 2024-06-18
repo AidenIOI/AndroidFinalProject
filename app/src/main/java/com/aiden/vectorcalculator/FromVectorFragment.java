@@ -90,7 +90,7 @@ public class FromVectorFragment extends Fragment {
 
             for (int i = 0; i < 3; i++) {
                 String text = posVectorText[i].getText().toString();
-                if (text.isEmpty()) {
+                if (text.isEmpty() || text.equals("-") || text.equals(".") || text.equals("-.")) {
                     Toast.makeText(this.getContext(), "A Field was Left Empty!", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -98,7 +98,7 @@ public class FromVectorFragment extends Fragment {
             }
             for (int i = 0; i < 3; i++) {
                 String text = dir1VectorText[i].getText().toString();
-                if (text.isEmpty()) {
+                if (text.isEmpty() || text.equals("-") || text.equals(".") || text.equals("-.")) {
                     Toast.makeText(this.getContext(), "A Field was Left Empty!", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -110,7 +110,7 @@ public class FromVectorFragment extends Fragment {
             boolean valueUnfilled = false;
             for (int i = 0; i < 3; i++) {
                 String text = dir2VectorText[i].getText().toString();
-                if (text.isEmpty()) {
+                if (text.isEmpty() || text.equals("-") || text.equals(".") || text.equals("-.")) {
                     valueUnfilled = true;
                 }
                 else {

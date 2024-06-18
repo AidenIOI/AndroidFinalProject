@@ -31,12 +31,22 @@ public class FirstFragment extends Fragment {
 
         binding.button1.setOnClickListener(v ->
                 NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_to_Equations_From_Vector)
+                        .navigate(R.id.action_to_equationsFromVectorFragment)
         );
 
         binding.button2.setOnClickListener(v ->
                 NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_to_Equations_From_Scalar)
+                        .navigate(R.id.action_to_equationsFromScalarFragment)
+        );
+
+        binding.button3.setOnClickListener(v ->
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_to_lineIntersectionsFragment)
+        );
+
+        binding.button4.setOnClickListener(v ->
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_to_planeIntersectionsFragment)
         );
     }
 

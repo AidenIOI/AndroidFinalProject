@@ -76,7 +76,7 @@ public class FromScalarFragment extends Fragment {
 
             for (int i = 0; i < 3; i++) {
                 String text = normalVectorText[i].getText().toString();
-                if (text.isEmpty()) {
+                if (text.isEmpty() || text.equals("-") || text.equals(".") || text.equals("-.")) {
                     Toast.makeText(this.getContext(), "A Field was Left Empty!", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -85,7 +85,7 @@ public class FromScalarFragment extends Fragment {
             Vector normalVector = new Vector(normalArray);
 
             String DValueText = DValue.getText().toString();
-            if (DValueText.isEmpty()) {
+            if (DValueText.isEmpty() || DValueText.equals("-") || DValueText.equals(".") || DValueText.equals("-.")) {
                 Toast.makeText(this.getContext(), "A Field was Left Empty!", Toast.LENGTH_LONG).show();
                 return;
             }

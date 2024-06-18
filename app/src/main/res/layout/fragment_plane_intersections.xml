@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FromVectorFragment" >
+
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+
+        android:layout_centerHorizontal="true" >
+
+        <Button
+            android:id="@+id/back"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/baseline_arrow_back_ios_new_24" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Plane Intersections"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/eqn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="25dp"
+        android:paddingLeft="15dp"
+        android:paddingBottom="20dp"
+        android:layout_below="@id/topBar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:text="Equation 1"
+            android:textAlignment="center" />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/equation1Vector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:paddingTop="25dp"
+        android:layout_below="@id/topBar"
+        android:layout_toRightOf="@id/eqn1" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[" />
+
+        <EditText
+            android:id="@+id/plane1posX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane1posY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane1posZ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="] + s [" />
+
+        <EditText
+            android:id="@+id/plane1dir1X"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane1dir1Y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane1dir1Z"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="] + t [" />
+
+        <EditText
+            android:id="@+id/plane1dir2X"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane1dir2Y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane1dir2Z"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="]" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/equation1Scalar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:paddingTop="25dp"
+        android:layout_below="@id/topBar"
+        android:layout_toRightOf="@id/eqn1" >
+
+        <EditText
+            android:id="@+id/plane1NormX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x  + " />
+
+        <EditText
+            android:id="@+id/plane1NormY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="y  + " />
+
+        <EditText
+            android:id="@+id/plane1NormZ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="z  + " />
+
+        <EditText
+            android:id="@+id/plane1D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" = 0" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/eqn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="25dp"
+        android:paddingLeft="15dp"
+        android:paddingBottom="20dp"
+        android:layout_below="@id/eqn1" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:text="Equation 2"
+            android:textAlignment="center" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/equation2Vector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:paddingTop="25dp"
+        android:layout_below="@id/eqn1"
+        android:layout_toRightOf="@id/eqn2" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[" />
+
+        <EditText
+            android:id="@+id/plane2posX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane2posY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane2posZ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="] + s [" />
+
+        <EditText
+            android:id="@+id/plane2dir1X"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane2dir1Y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane2dir1Z"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="] + t [" />
+
+        <EditText
+            android:id="@+id/plane2dir2X"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane2dir2Y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane2dir2Z"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="]" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/equation2Scalar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:paddingTop="25dp"
+        android:layout_below="@id/eqn1"
+        android:layout_toRightOf="@id/eqn2" >
+
+        <EditText
+            android:id="@+id/plane2NormX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x  + " />
+
+        <EditText
+            android:id="@+id/plane2NormY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="y  + " />
+
+        <EditText
+            android:id="@+id/plane2NormZ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="z  + " />
+
+        <EditText
+            android:id="@+id/plane2D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" = 0" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/eqn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:paddingTop="25dp"
+        android:paddingLeft="15dp"
+        android:paddingBottom="20dp"
+        android:layout_below="@id/eqn2" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:text="Equation 3"
+            android:textAlignment="center" />
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/removeEquationButton"
+            style="?attr/materialIconButtonStyle"
+            android:textColor="#404040"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text=" Remove"
+            app:icon="@drawable/remove_circle_outlined"
+            app:iconTint="#404040" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/equation3Vector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:paddingTop="25dp"
+        android:layout_below="@id/eqn2"
+        android:layout_toRightOf="@id/eqn3" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[" />
+
+        <EditText
+            android:id="@+id/plane3posX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane3posY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane3posZ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="] + s [" />
+
+        <EditText
+            android:id="@+id/plane3dir1X"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane3dir1Y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane3dir1Z"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="] + t [" />
+
+        <EditText
+            android:id="@+id/plane3dir2X"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane3dir2Y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="," />
+
+        <EditText
+            android:id="@+id/plane3dir2Z"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="]" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/equation3Scalar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:paddingTop="25dp"
+        android:layout_below="@id/eqn2"
+        android:layout_toRightOf="@id/eqn3" >
+
+        <EditText
+            android:id="@+id/plane3NormX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x  + " />
+
+        <EditText
+            android:id="@+id/plane3NormY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="y  + " />
+
+        <EditText
+            android:id="@+id/plane3NormZ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="z  + " />
+
+        <EditText
+            android:id="@+id/plane3D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" = 0" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addEquationButton"
+        style="?attr/materialIconButtonStyle"
+        android:textColor="#404040"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Add Equation"
+        app:icon="@drawable/add_circle_outlined"
+        app:iconTint="#404040"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/eqn3" />
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculate"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/addEquationButton" />
+
+    <TextView
+        android:id="@+id/outputText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:paddingTop="80dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:layout_below="@id/calculateButton" />
+
+    <com.agog.mathdisplay.MTMathView
+        android:id="@+id/outputEqn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:paddingTop="85dp"
+        android:paddingLeft="15dp"
+        android:layout_below="@id/outputText" />
+
+</RelativeLayout>

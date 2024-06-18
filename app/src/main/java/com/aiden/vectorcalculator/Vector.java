@@ -32,9 +32,9 @@ public class Vector {
     }
 
     public boolean isFactorable() {
-        // Factorable if all numbers are whole, and greater than 1 (or less than -1)
+        // Factorable if all numbers are whole and greater than 1 (or less than -1), or zero
         if (x == (int) x && y == (int) y && z == (int) z) {
-            if (Math.abs(x) > 1 && Math.abs(y) > 1 && Math.abs(z) > 1) {
+            if ((Math.abs(x) > 1 || x == 0) && (Math.abs(y) > 1 || y == 0) && (Math.abs(z) > 1 || z == 0)) {
                 return true;
             }
         }
@@ -47,21 +47,21 @@ public class Vector {
             latex += String.valueOf((int) x);
         }
         else {
-            latex += String.valueOf(x);
+            latex += String.valueOf(((int) (x * 10)) / 10.0);
         }
         latex += ",";
         if (y == (int) y) {
             latex += String.valueOf((int) y);
         }
         else {
-            latex += String.valueOf(y);
+            latex += String.valueOf(((int) (y * 10)) / 10.0);
         }
         latex += ",";
         if (z == (int) z) {
             latex += String.valueOf((int) z);
         }
         else {
-            latex += String.valueOf(z);
+            latex += String.valueOf(((int) (z * 10)) / 10.0);
         }
         latex += "]";
         return latex;

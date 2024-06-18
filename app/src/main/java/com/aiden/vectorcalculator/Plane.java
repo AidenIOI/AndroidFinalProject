@@ -6,29 +6,64 @@ public class Plane {
     private Vector posVec;
     private Vector dir1Vec;
     private Vector dir2Vec;
+    private Vector normVec;
+
+    private double D;
 
     Plane() {
         posVec = new Vector();
         dir1Vec = new Vector();
         dir2Vec = new Vector();
+        normVec = new Vector();
+        D = 0;
     }
 
     Plane(double posX, double posY, double posZ, double dir1X, double dir1Y, double dir1Z, double dir2X, double dir2Y, double dir2Z) {
         posVec = new Vector(posX, posY, posZ);
         dir1Vec = new Vector(dir1X, dir1Y, dir1Z);
         dir2Vec = new Vector(dir2X, dir2Y, dir2Z);
+
+        normVec = crossProduct(dir1Vec, dir2Vec);
+
+        D = -((normVec.x * posVec.x) + (normVec.y * posVec.y) + (normVec.z * posVec.z));
     }
 
     Plane(double[] pos, double[] dir1, double[] dir2) {
         posVec = new Vector(pos);
         dir1Vec = new Vector(dir1);
         dir2Vec = new Vector(dir2);
+
+        normVec = crossProduct(dir1Vec, dir2Vec);
+
+        D = -((normVec.x * posVec.x) + (normVec.y * posVec.y) + (normVec.z * posVec.z));
     }
 
     Plane(Vector pos, Vector dir1, Vector dir2) {
         posVec = pos;
         dir1Vec = dir1;
         dir2Vec = dir2;
+
+        normVec = crossProduct(dir1Vec, dir2Vec);
+
+        D = -((normVec.x * posVec.x) + (normVec.y * posVec.y) + (normVec.z * posVec.z));
+    }
+
+    Plane(Vector normal, double d) {
+        dir1Vec = new Vector(-normal.z, 0, normal.x);
+
+        // Use cross product of normal and dir1Vector to find dir2Vector
+        dir2Vec = crossProduct(normal, dir1Vec);
+
+        // Solve for an arbitrary point on the plane (y = 1, z = 1, solve for x)
+        posVec = new Vector (
+                - (d + normal.y + normal.z) / normal.x, // Ax = -By - Cz - D = -(By + Cz + D) / A
+                1,
+                1
+        );
+
+        normVec = normal;
+
+        D = d;
     }
 
     public Vector posVec() {
@@ -41,6 +76,14 @@ public class Plane {
 
     public Vector dir2Vec() {
         return dir2Vec;
+    }
+
+    public Vector normVec() {
+        return normVec;
+    }
+
+    public double D() {
+        return D;
     }
 
     public String vectorEqnLatex() {
@@ -195,8 +238,7 @@ public class Plane {
     }
 
     public String scalarEqnLatex() {
-        Vector normal = crossProduct(dir1Vec, dir2Vec);
-        double d = -(posVec.x * normal.x + posVec.y * normal.y + posVec.z * normal.z);
+        Vector normal = normVec;
 
         String latex = "";
         if (normal.x != 0) {
@@ -214,11 +256,11 @@ public class Plane {
         else if (normal.y > 0) {
             latex += "+" + String.valueOf(normal.z) + "z";
         }
-        if (d < 0 || (latex.isEmpty() && d != 0)) {
-            latex += String.valueOf(d);
+        if (D < 0 || (latex.isEmpty() && D != 0)) {
+            latex += String.valueOf(D);
         }
-        else if (d > 0) {
-            latex += "+" + String.valueOf(d);
+        else if (D > 0) {
+            latex += "+" + String.valueOf(D);
         }
 
         return latex.isEmpty() ? "" : "0=" + latex ;
