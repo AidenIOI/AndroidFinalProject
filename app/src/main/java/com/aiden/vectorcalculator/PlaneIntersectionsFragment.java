@@ -190,11 +190,18 @@ public class PlaneIntersectionsFragment extends Fragment{
 
         binding.addEquationButton.setOnClickListener(l -> {
             eqn3.setVisibility(View.VISIBLE);
-            equation3Vector.setVisibility(View.VISIBLE);
+            binding.addEquationButton.setVisibility(View.GONE);
+            if (((String) equation3Spinner.getSelectedItem()).equals("Vector")) {
+                equation3Vector.setVisibility(View.VISIBLE);
+            }
+            else if (((String) equation3Spinner.getSelectedItem()).equals("Scalar")) {
+                equation3Scalar.setVisibility(View.VISIBLE);
+            }
         });
 
         binding.removeEquationButton.setOnClickListener(l -> {
             eqn3.setVisibility(View.GONE);
+            binding.addEquationButton.setVisibility(View.VISIBLE);
             equation3Scalar.setVisibility(View.INVISIBLE);
             equation3Vector.setVisibility(View.INVISIBLE);
         });
@@ -360,8 +367,6 @@ public class PlaneIntersectionsFragment extends Fragment{
 
                 // 3 Plane Intersection
                 Intersections intersectionType = intersection(plane1, plane2, plane3);
-
-                Log.println(Log.INFO, "OAGJAOPGJ", intersectionType.name());
 
                 switch (intersectionType) {
                     case PAIRS:

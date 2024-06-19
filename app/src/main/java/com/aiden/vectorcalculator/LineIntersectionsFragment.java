@@ -62,7 +62,6 @@ public class LineIntersectionsFragment extends Fragment {
         outputEqn.setFontSize(60);
 
         binding.calculateButton.setOnClickListener(l -> {
-            // TODO: Catch inputs of "-", ".", etc. (ALL FRAGMENTS)
             for (int i = 0; i < 12; i++) {
                 String text = inputs[i].getText().toString();
                 if (text.isEmpty() || text.equals("-") || text.equals(".") || text.equals("-.")) {
@@ -95,6 +94,11 @@ public class LineIntersectionsFragment extends Fragment {
                     outputEqn.setLatex(getPOI(line1, line2).toLatex());
                     outputText.setVisibility(View.VISIBLE);
                     outputEqn.setVisibility(View.VISIBLE);
+                    break;
+                case DISTINCT:
+                    outputText.setText("Lines are parallel and distinct.\nNo solutions.");
+                    outputText.setVisibility(View.VISIBLE);
+                    outputEqn.setVisibility(View.INVISIBLE);
                     break;
                 default:
                     outputText.setText("An error occured.");

@@ -11,6 +11,13 @@ public class VectorMath {
         LINE,
         COINCIDENT
     }
+
+    public static String valueOf(double num) {
+        if (num == (int) num) {
+            return String.valueOf((int) num);
+        }
+        return String.valueOf(Math.round(num * 100) / 100.0);
+    }
     public static double dotProduct(Vector vec1, Vector vec2) {
         return    vec1.x * vec2.x
                 + vec1.y * vec2.y
@@ -141,6 +148,21 @@ public class VectorMath {
         double x = - (norm1.y * y + norm1.z * z + plane1.D()) / norm1.x;
 
         return new Point(x, y, z);
+    }
+
+    public static Point getPOI(Line line, Plane plane) {
+        Vector normal = plane.normVec();
+        Vector pos = line.posVec();
+        Vector dir = line.dirVec();
+        double t = - (normal.x * pos.x + normal.y * pos.y + normal.z * pos.z + plane.D())
+                / (normal.x * dir.x + normal.y * dir.y + normal.z * dir.z);
+
+        Point poi = new Point();
+        poi.x = pos.x + dir.x * t;
+        poi.y = pos.y + dir.y * t;
+        poi.z = pos.z + dir.z * t;
+
+        return poi;
     }
 
     public static Line getLOI(Plane plane1, Plane plane2) {
@@ -300,6 +322,19 @@ public class VectorMath {
             return Intersections.PAIRS;
         }
         // Planes intersect at a point
+        return Intersections.POINT;
+    }
+
+    public static Intersections intersection(Line line, Plane plane) {
+        // Parallel
+        if (dotProduct(line.dirVec(), plane.normVec()) == 0) {
+            // Line on Plane
+            if (pointOnPlane(line.posVec(), plane)) {
+                return Intersections.LINE;
+            }
+            return Intersections.DISTINCT;
+        }
+
         return Intersections.POINT;
     }
 }

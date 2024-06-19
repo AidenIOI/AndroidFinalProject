@@ -43,26 +43,11 @@ public class Vector {
 
     public String toLatex() {
         String latex = "[";
-        if (x == (int) x) {
-            latex += String.valueOf((int) x);
-        }
-        else {
-            latex += String.valueOf(((int) (x * 10)) / 10.0);
-        }
+        latex += VectorMath.valueOf(x);
         latex += ",";
-        if (y == (int) y) {
-            latex += String.valueOf((int) y);
-        }
-        else {
-            latex += String.valueOf(((int) (y * 10)) / 10.0);
-        }
+        latex += VectorMath.valueOf(y);
         latex += ",";
-        if (z == (int) z) {
-            latex += String.valueOf((int) z);
-        }
-        else {
-            latex += String.valueOf(((int) (z * 10)) / 10.0);
-        }
+        latex += VectorMath.valueOf(z);
         latex += "]";
         return latex;
     }

@@ -92,148 +92,67 @@ public class Plane {
 
     public String paraXLatex() {
         String latex = "";
-        int pos = (int) posVec.x;
-        int dir1 = (int) dir1Vec.x;
-        int dir2 = (int) dir2Vec.x;
 
         if (posVec.x != 0) {
-            if (pos == posVec.x) {
-                latex += pos;
-            }
-            else {
-                latex += posVec.x;
-            }
+            latex += VectorMath.valueOf(posVec.x);
         }
         if (dir1Vec.x < 0 || (latex.isEmpty() && dir1Vec.x > 0)) {
-            if (dir1 == dir1Vec.x) {
-                latex += dir1 + "s";
-            }
-            else {
-                latex += dir1Vec.x + "s";
-            }
+            latex += VectorMath.valueOf(dir1Vec.x) + "s";
         }
         else if (dir1Vec.x > 0) {
-            if (dir1 == dir1Vec.x) {
-                latex += "+" + dir1 + "s";
-            }
-            else {
-                latex += "+" + dir1Vec.x + "s";
-            }
+            latex += "+" + VectorMath.valueOf(dir1Vec.x) + "s";
         }
         if (dir2Vec.x < 0 || (latex.isEmpty() && dir2Vec.x > 0)) {
-            if (dir2 == dir2Vec.x) {
-                latex += dir2 + "t";
-            }
-            else {
-                latex += dir2Vec.x + "t";
-            }
+            latex += VectorMath.valueOf(dir2Vec.x) + "t";
         }
         else if (dir2Vec.x > 0) {
-            if (dir2 == dir2Vec.x) {
-                latex += "+" + dir2 + "t";
-            }
-            else {
-                latex += "+" + dir2Vec.x + "t";
-            }
+            latex += "+" + VectorMath.valueOf(dir2Vec.x) + "t";
         }
+
         return "x=" + (latex.isEmpty() ? "0" : latex);
     }
 
     public String paraYLatex() {
         String latex = "";
-        int pos = (int) posVec.y;
-        int dir1 = (int) dir1Vec.y;
-        int dir2 = (int) dir2Vec.y;
 
         if (posVec.y != 0) {
-            if (pos == posVec.y) {
-                latex += pos;
-            }
-            else {
-                latex += posVec.y;
-            }
+            latex += VectorMath.valueOf(posVec.y);
         }
         if (dir1Vec.y < 0 || (latex.isEmpty() && dir1Vec.y > 0)) {
-            if (dir1 == dir1Vec.y) {
-                latex += dir1 + "s";
-            }
-            else {
-                latex += dir1Vec.y + "s";
-            }
+            latex += VectorMath.valueOf(dir1Vec.y) + "s";
         }
         else if (dir1Vec.y > 0) {
-            if (dir1 == dir1Vec.y) {
-                latex += "+" + dir1 + "s";
-            }
-            else {
-                latex += "+" + dir1Vec.y + "s";
-            }
+            latex += "+" + VectorMath.valueOf(dir1Vec.y) + "s";
         }
         if (dir2Vec.y < 0 || (latex.isEmpty() && dir2Vec.y > 0)) {
-            if (dir2 == dir2Vec.y) {
-                latex += dir2 + "t";
-            }
-            else {
-                latex += dir2Vec.y + "t";
-            }
+            latex += VectorMath.valueOf(dir2Vec.y) + "t";
         }
         else if (dir2Vec.y > 0) {
-            if (dir2 == dir2Vec.y) {
-                latex += "+" + dir2 + "t";
-            }
-            else {
-                latex += "+" + dir2Vec.y + "t";
-            }
+            latex += "+" + VectorMath.valueOf(dir2Vec.y) + "t";
         }
+
         return "y=" + (latex.isEmpty() ? "0" : latex);
     }
 
     public String paraZLatex() {
         String latex = "";
-        int pos = (int) posVec.z;
-        int dir1 = (int) dir1Vec.z;
-        int dir2 = (int) dir2Vec.z;
 
         if (posVec.z != 0) {
-            if (pos == posVec.z) {
-                latex += pos;
-            }
-            else {
-                latex += posVec.z;
-            }
+            latex += VectorMath.valueOf(posVec.z);
         }
         if (dir1Vec.z < 0 || (latex.isEmpty() && dir1Vec.z > 0)) {
-            if (dir1 == dir1Vec.z) {
-                latex += dir1 + "s";
-            }
-            else {
-                latex += dir1Vec.z + "s";
-            }
+            latex += VectorMath.valueOf(dir1Vec.z) + "s";
         }
         else if (dir1Vec.z > 0) {
-            if (dir1 == dir1Vec.z) {
-                latex += "+" + dir1 + "s";
-            }
-            else {
-                latex += "+" + dir1Vec.z + "s";
-            }
+            latex += "+" + VectorMath.valueOf(dir1Vec.z) + "s";
         }
         if (dir2Vec.z < 0 || (latex.isEmpty() && dir2Vec.z > 0)) {
-            if (dir2 == dir2Vec.z) {
-                latex += dir2 + "t";
-            }
-            else {
-                latex += dir2Vec.z + "t";
-            }
+            latex += VectorMath.valueOf(dir2Vec.z) + "t";
         }
         else if (dir2Vec.z > 0) {
-            if (dir2 == dir2Vec.z) {
-                latex += "+" + dir2 + "t";
-            }
-            else {
-                latex += "+" + dir2Vec.z + "t";
-            }
+            latex += "+" + VectorMath.valueOf(dir2Vec.z) + "t";
         }
+
         return "z=" + (latex.isEmpty() ? "0" : latex);
     }
 
@@ -242,25 +161,25 @@ public class Plane {
 
         String latex = "";
         if (normal.x != 0) {
-            latex += String.valueOf(normal.x) + "x";
+            latex += VectorMath.valueOf(normal.x) + "x";
         }
         if (normal.y < 0 || (latex.isEmpty() && normal.y != 0)) {
-            latex += String.valueOf(normal.y) + "y";
+            latex += VectorMath.valueOf(normal.y) + "y";
         }
         else if (normal.y > 0) {
-            latex += "+" + String.valueOf(normal.y) + "y";
+            latex += "+" + VectorMath.valueOf(normal.y) + "y";
         }
         if (normal.z < 0 || (latex.isEmpty() && normal.z != 0)) {
-            latex += String.valueOf(normal.z) + "z";
+            latex += VectorMath.valueOf(normal.z) + "z";
         }
         else if (normal.y > 0) {
-            latex += "+" + String.valueOf(normal.z) + "z";
+            latex += "+" + VectorMath.valueOf(normal.z) + "z";
         }
         if (D < 0 || (latex.isEmpty() && D != 0)) {
-            latex += String.valueOf(D);
+            latex += VectorMath.valueOf(D);
         }
         else if (D > 0) {
-            latex += "+" + String.valueOf(D);
+            latex += "+" + VectorMath.valueOf(D);
         }
 
         return latex.isEmpty() ? "" : "0=" + latex ;

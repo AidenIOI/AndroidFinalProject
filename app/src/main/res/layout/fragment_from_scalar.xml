@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".FromVectorFragment" >
 
-    <!-- TODO: Align equations along a barrier / guideline -->
-
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -29,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Scalar to Vector Form"
+            android:text="Scalar to Alternate Forms"
             android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold" />

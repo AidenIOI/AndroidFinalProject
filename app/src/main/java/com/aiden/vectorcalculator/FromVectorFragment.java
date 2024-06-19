@@ -129,8 +129,6 @@ public class FromVectorFragment extends Fragment {
                 isPlane = false;
             }
 
-            // TODO: Work on sizing of latex views to better fit display
-            // TODO: Add line/plane dependent equations
             if (isPlane) {
                 Plane plane = new Plane(posArray, dir1Array, dir2Array);
 
